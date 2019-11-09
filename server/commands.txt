@@ -1,0 +1,11 @@
+1. Add --watch in package.json to make sure that webpack will restart when we change a file
+
+2. Nodemon will restart the server only when webpack puts a new bundle inside build folder
+  nodemon --watch build
+
+and execute this command 
+  \"node build/bundle.js\""
+
+3. We make the public folder to put the client bundle because has to be available to anyone who asks for this js file.
+
+4. https://react-ssr-api.herokuapp.com/
