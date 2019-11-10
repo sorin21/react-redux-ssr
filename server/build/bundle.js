@@ -186,7 +186,7 @@ app.use(_express2.default.static('public'));
 
 // * allows all routes and express decides what to do
 app.get('*', function (req, res) {
-  var store = (0, _createStore2.default)(req);
+  var store = (0, _createStore2.default)();
   // const context = {};
   // logic to initialize and load data into store
   res.send((0, _renderer2.default)(req, store));
