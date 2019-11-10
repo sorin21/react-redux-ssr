@@ -1,6 +1,9 @@
 // define some functions that babel needs to use 
 // in the async await sytax from actions
-import "@babel/polyfill";
+// import "@babel/polyfill";
+// import "core-js/stable";
+// import "regenerator-runtime/runtime";
+import 'babel-polyfill';
 
 import express from 'express';
 import renderer from './helpers/renderer';
@@ -14,8 +17,8 @@ app.use(express.static('public'));
 
 // * allows all routes and express decides what to do
 app.get('*', (req, res) => {
-  const store = createStore();
-
+  const store = createStore(req);
+  // const context = {};
   // logic to initialize and load data into store
   res.send(renderer(req, store));
 })

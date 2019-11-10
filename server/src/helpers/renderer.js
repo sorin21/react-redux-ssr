@@ -1,5 +1,5 @@
 import React from 'react';
-import { renderToString } from 'react-dom/server';
+import ReactDOMServer from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 // import { renderRoutes } from 'react-router-config';
@@ -9,20 +9,11 @@ import Routes from '../client/Routes';
 
 // req, store come here from index.js from res.send(renderer(req, store));
 export default (req, store, context) => {
-  // const content = renderToString(
-  //   <Provider store={store}>
-  //     <StaticRouter location={req.path} context={context}>
-  //       <div>{renderRoutes(Routes)}</div>
-  //     </StaticRouter>
-  //   </Provider>
-  // );
-
-  // const helmet = Helmet.renderStatic();
-  const content = renderToString(
+  const content = ReactDOMServer.renderToString(
     // context is required for errors handling and redirects
-    // path si for looking to diff routes and decide what to show on screen
+    // path is for looking to diff routes and decide what to show on screen
     <Provider store={store}>
-      <StaticRouter location={ req.path } context={ context }>
+      <StaticRouter location={ req.url } context={ {} }>
         <Routes />
       </StaticRouter>
     </Provider>
